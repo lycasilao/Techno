@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  dashboard_admin.php                                   #
@@ -107,7 +108,6 @@
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item active"><a class="nav-link" href="dashboard_admin.php?username=<?php echo $user?>">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="product_admin.php?username=<?php echo $user?>">Products</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us_admin.php?username=<?php echo $user?>">Contact Us</a></li>
                             <li class="nav-item"><a class="nav-link" href="account_admin.php?username=<?php echo $user?>">Account</a></li>
                         </ul>
                     </div>

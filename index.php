@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  index.php                                             #
@@ -54,11 +55,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
                         <div class="login-box">
-                        <a href="#"  id="basic" class="selectpicker show-tick form-control sign-up"  data-toggle="dropdown">Sign In</a>
-                                <ul class="dropdown-menu">
-                                    <li> <a class="login-btn" href="<?php echo $client->createAuthUrl(); ?>">Login with Google</a></li>
-                                    <li><a  class="nav" data-toggle="modal" data-target="#login" href="#">Login</a></li>
-                                </ul>
+                        <a href="#"  id="basic" class="selectpicker show-tick form-control sign-up"  data-toggle="modal" data-target="#login" href="#">SIGN IN</a>
                         </div>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
@@ -369,7 +366,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header" style="padding:20px 50px;">
-                        <h3 align="center" ><b>Login</b></h3>
+                        <h3 align="center" ><b>Sign In</b></h3>
                         <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
@@ -387,16 +384,83 @@
                             <input type="password" name="password" class="form-control" placeholder="" required="required">
                             </div>
                         </div>
-                                
+                            
                         <div class="form-group">
                         <label class="col-sm-4 control-label"></label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <input type="submit" name="login" class="btn btn-success" value="Login">
-                            <input type="reset" name="" class="btn btn-danger" value="Clear">
+                            <button class="btn btn-danger"> <a  style="color:white;" class="login-btn" href="<?php echo $client->createAuthUrl(); ?>"> Login with Google+ </a> </button>
+                           
                         </div>
                         </div>
+                        <div>
+                       
+                        </div>
+                        Don't have an account? <a data-toggle="modal" data-target="#register" href="#">Register Here</a>
                     </form>
                     </div>
+                </div>
+            </div>
+        </div>
+         <!-- this modal is for Registration -->
+         <div class="modal fade" id="register" role="dialog">
+            <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:20px 50px;">
+                        <h3 align="center" ><b>Registration Form</b></h3>
+                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                    </div>
+                <div class="modal-body" style="padding:40px 50px;">
+
+                    <form class="form-horizontal" action="#" name="form" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Firstname</label>
+                        <div class="col-sm-8">
+                        <input type="text" name="firstname" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Lastname</label>
+                        <div class="col-sm-8">
+                        <input type="text" name="lastname" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                        <input type="text" name="username" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Contact No.</label>
+                        <div class="col-sm-8">
+                        <input type="text" name="contact" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Gmail Address </label>
+                        <div class="col-sm-8">
+                        <input type="text" name="gmail" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                        <input type="password" name="password" class="form-control" placeholder="" required="required">
+                        </div>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-8">
+                            <input type="submit" name="register" class="btn btn-success" value="Register">
+                            <input type="reset" name="" class="btn btn-danger" value="Clear">
+                        </div>
+                    </div>
+                    </form>
+                </div>
                 </div>
             </div>
         </div>
@@ -419,4 +483,5 @@
         <script src="js/custom.js"></script>
 
     </body>
+
 </html>

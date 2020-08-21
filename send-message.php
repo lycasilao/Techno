@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  send-message.php                                      #
@@ -29,7 +30,7 @@
     use Twilio\Rest\Client;
 
     $account_sid = "ACd90c3ac0576ea0160d4083f5ed092b85";
-    $auth_token = "4e1085ce0c11a670b524329ad364278e";
+    $auth_token = "6717fdfa1b3b24e1439c599a0282fb1e";
     $twilio_phone_number = " +12055093615";
 
     $client = new Client($account_sid, $auth_token);
@@ -43,6 +44,7 @@
     );
 ?>
 <script>
-    alert('Text message sent.');
+    alert('Message sent.');
     window.location.href='contact-us_user.php?username=<?php echo $user ?>';
 </script>
+

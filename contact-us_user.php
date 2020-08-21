@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  contact-us_user.php                                   #
@@ -114,9 +115,11 @@
                                 while($row = mysqli_fetch_array($result)){
                             ?>
                             <li>
+                            
                                 <a href="#" class="photo"><img src="<?php echo $row['picture_location'] ?>" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#"><?php echo $row['prodname'] ?> </a></h6>
+                                <h6><a href="#"><?php echo $row['prodname'] ?> </a></h6> 
                                 <p><?php echo $row['quantity'] ?> - <span class="price">Php <?php echo $row['price'] ?></span></p>
+                                <a  style="color:red;" href='deletecart.php?delete="<?php echo $row['cart_id'] ?>"&username=<?php echo $user?>' onclick="return confirm('Are you sure you want to remove this product?')" >Remove</a>
                             </li>
                             <?php
                                 }
@@ -359,5 +362,6 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
     </body>
+
 
 </html>

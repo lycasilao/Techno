@@ -97,7 +97,7 @@
                             $result = mysqli_query($conn,$sql);
                             $row = mysqli_fetch_array($result); 
                             $id =  $row['user_id'];
-                            $query = "SELECT prodname, price, quantity, picture_location FROM cart where user_id ='$id'"; 
+                            $query = "SELECT cart_id, prodname, price, quantity, picture_location FROM cart where user_id ='$id'"; 
                             $result = mysqli_query($conn,$query);    
                         ?>
 
@@ -113,6 +113,7 @@
                                 <a href="#" class="photo"><img src="<?php echo $row['picture_location'] ?>" class="cart-thumb" alt="" /></a>
                                 <h6><a href="#"><?php echo $row['prodname'] ?> </a></h6>
                                 <p><?php echo $row['quantity'] ?> - <span class="price">Php <?php echo $row['price'] ?></span></p>
+                                <a  style="color:red;" href='deletecart.php?delete="<?php echo $row['cart_id'] ?>"&username=<?php echo $user?>' onclick="return confirm('Are you sure you want to remove this product?')" >Remove</a>
                             </li>
                             <?php
                                 }
@@ -180,8 +181,20 @@
                                                             <div class="box-img-hover">
                                                                 <img src="<?php echo $row['picture_location'] ?>" class="img-fluid" alt="Image">
                                                                 <div class="mask-icon">
-                                                                    <a class="cart" href='addtocart.php?id=<?php echo $row['product_code'];?>&username=<?php echo $user; ?>'>Add to Cart</a>
+                                                                <a class="cart" data-toggle="modal" data-target="#addtocart" href="#" >Add to Cart</a>
+                                                                <?php
+                                                                if (isset($_POST['submit'])) {
+                                                                    $quantity = $_POST['quantity'];
+                                                                
+                                                                ?>
+                                                               
+                                                                <a class="cart" href='addtocart.php?id=<?php echo $row['product_code'];?>&username=<?php echo $user; ?>&quantity=<?php echo $quantity; ?>'>Add to Cart</a>
+                                                               
+                                                                <?php                                                                
+                                                                }
+                                                                ?>
                                                                 </div>
+                                                               
                                                             </div>
                                                             <div class="why-text">
                                                                 <h4><?php echo $row['prodname'] ?><br> (Stocks:<?php echo $row['stocks'] ?> )</h4>
@@ -221,7 +234,25 @@
                 </div>
             </div>
         </div>
-        <!-- End Shop Page -->                                
+        <!-- End Shop Page -->  
+        
+        <div class="modal fade" id="addtocart" role="dialog">
+            <div class="modal-dialog">
+                
+            <div class="modal-content">
+                    <div class="modal-header" style="padding:20px 50px;">
+                        <h3 align="center" ><b>Quantity</b></h3>
+                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                    </div>
+                <div class="modal-body" style="padding:40px 50px; margin-left: 80px;">
+                <form name="form" action="" method="post">   
+                    <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="cart" size="4" pattern="" inputmode="">
+                    <input name="submit" type="submit" value="Confirm" class="btn btn-success" />
+                </form>
+                </div>
+                </div>
+            </div>
+        </div>
     
         <!-- Start copyright  -->
         <div class="footer-copyright">

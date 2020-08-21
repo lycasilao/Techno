@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  functions.php                                         #
@@ -87,4 +88,5 @@ function addPayment($data) {
 
     return false;
 }
+
 ?>

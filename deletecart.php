@@ -1,7 +1,7 @@
 
 <!--
 #--------------------------------------------------------------------------#
-# Filename        :  db.php                                                #
+# Filename        :  delete.php                                            #
 # Author          :  Lyka C. Casilao                                       #        
 # Last Modified   :  July 2, 2020                                          #
 # Honor Code      : This is my own work and I have not received any        #
@@ -13,14 +13,35 @@
 #                   points for this endeavor.                              #
 #--------------------------------------------------------------------------#
 -->
-<?php
-    session_start();
-    session_regenerate_id(true);
-    // change the information according to your database
-    $db_connection = mysqli_connect("localhost","lykacasilao","admin","cacti_database");
-    // CHECK DATABASE CONNECTION
-    if(mysqli_connect_errno()){
-        echo "Connection Failed".mysqli_connect_error();
-        exit;
 
-}
+<?php
+    $conn = new mysqli('localhost', 'lykacasilao', 'admin', 'cacti_database') ;
+    if ($conn->connect_error)
+        die("Connection Failed");
+?>
+
+<?php 
+	if (isset($_GET['delete'])) {
+		$id=$_GET['delete'];
+		$user=$_GET['username'];
+		$sql = "DELETE FROM cart WHERE cart_id=$id"; 
+		if (mysqli_query($conn, $sql)){
+			?>
+			<script>
+				alert('Successfully removed.');
+				window.location.href='product_user.php?username=<?php echo $user ?>';
+			</script>
+		  <?php 
+		} 
+		else{
+			?>
+			<script>
+				alert('Invalid.');
+				window.location.href='product_user.php?username=<?php echo $user ?>';
+			</script>
+		  <?php 
+		}
+		mysqli_close ();
+	}
+
+ ?>

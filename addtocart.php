@@ -22,6 +22,7 @@
 <?php
     $code = $_GET['id'];
     $user = $_GET['username'];
+    $q = $_GET['quantity'];
 
     $sql = ("SELECT *  FROM products WHERE product_code= $code");
     $result = mysqli_query($conn, $sql);
@@ -48,15 +49,16 @@
             $cartid = $n['cart_id'];     
             $quantity = $n['quantity'];  
             $priceold = $n['price'];   
-
-            $quan = $quantity + 1;
-            $total = $priceold + $price;
+          
+            $quan = $quantity + $q;
+            
+            $total = $priceold + ($price * $quan);
                 
         if(!empty($cartid)){
             $sql = "UPDATE cart SET prodname='$prodname', price='$total', quantity='$quan', user_id = '$userid', picture_location = '$picture'  WHERE cart_id='$cartid'";
         }
         else{
-            $sql = "INSERT into cart(cart_id, prodname, price, quantity, user_id, picture_location)VALUES(default,'$prodname','$price','1','$userid', '$picture')";
+            $sql = "INSERT into cart(cart_id, prodname, price, quantity, user_id, picture_location)VALUES(default,'$prodname','$total','$quan','$userid', '$picture')";
         }
     
     if (mysqli_query($conn, $sql)){

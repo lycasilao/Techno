@@ -1,3 +1,4 @@
+
 <!--
 #--------------------------------------------------------------------------#
 # Filename        :  account_user.php                                      #
@@ -117,6 +118,8 @@
                                 <a href="#" class="photo"><img src="<?php echo $row['picture_location'] ?>" class="cart-thumb" alt="" /></a>
                                 <h6><a href="#"><?php echo $row['prodname'] ?> </a></h6>
                                 <p><?php echo $row['quantity'] ?> - <span class="price">Php <?php echo $row['price'] ?></span></p>
+                                <a  style="color:red;" href='deletecart.php?delete="<?php echo $row['cart_id'] ?>"&username=<?php echo $user?>' onclick="return confirm('Are you sure you want to remove this product?')" >Remove</a>
+
                             </li>
                             <?php
                                 }
@@ -194,6 +197,10 @@
                                     <div class="title-left">
                                     </div>
                                     <div class="rounded p-2 bg-light">
+                                    <div class="d-flex gr-total">
+                                            <h3>Payment Mode:</h3>
+                                            <div class="ml-auto h5"> COD </div>
+                                        </div>
                                     <?php
                                         $sql2 = "SELECT dates, order_status, total FROM checkout where checkout_id=$check"; 
                                         $result2 = mysqli_query($conn,$sql2);
@@ -214,37 +221,15 @@
                                         </div>
                                         <?php } ?>
                                         <div class="d-flex gr-total">
-                                            <h5>Grand Total</h5>
+                                            <h2>Grand Total</h2>
                                             <div class="ml-auto h5"> Php <?php echo $total?>.00 </div>
                                         </div>
-                                        <div class="col-md-12 col-lg-12">
-                                            <div class="order-box">
-                                                <div class="d-flex">
-                                                    <div class="font-weight-bold"><div class="font-weight-bold">Order Status: <?php echo $orderstatus?></div></div>  
-                                                </div>  
-                                                <div>
-                                                <button class="btn btn-warning" ><a  class="nav" href="/cacti/stripe/index.php">Pay Now</a></button> <br> <br>
-                                                <form class="paypal" action="payment.php" method="post" id="paypal_form">
-                                                    <input type="hidden" name="cmd" value="_xclick" />
-                                                    <input type="hidden" name="no_note" value="1" />
-                                                    <input type="hidden" name="lc" value="UK" />
-                                                    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
-                                                    <input type="hidden" name="first_name" value="Customer's First Name" />
-                                                    <input type="hidden" name="last_name" value="Customer's Last Name" />
-                                                    <input type="hidden" name="payer_email" value="customer@example.com" />
-                                                    <input type="hidden" name="item_number" value="123456" />
-                                                    <table border="0" cellpadding="10" cellspacing="0" align="right"><tr><td align="right"></td></tr><tr><td align="right"><input type="image" src="https://www.paypalobjects.com/webstatic/en_AU/i/buttons/btn_paywith_primary_s.png" alt="Submit" /></td></tr></table>
-                                                </form>
-                                               
-                                                <!-- PayPal Logo -->
-                                                
-                                                <!-- PayPal Logo -->
-                                                </div>
-                                               
-                                                </div>
-                                            </div>
+                                        <div class="d-flex gr-total">
+                                            <h3>Order Status:</h3>
+                                            <div class="ml-auto h5"><a style="color:green;"> <?php echo $orderstatus?></a> </div>
                                         </div>
-                               
+                                        
+                               </div>
                                  </div>
                             </div>
                         </div>
